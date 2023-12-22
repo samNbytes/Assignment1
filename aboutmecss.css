@@ -1,0 +1,46 @@
+/* Add this to your CSS file for the About Me page */
+
+body {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0b54b3;
+    color: #1a1212;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Style for links */
+a {
+    color: #feffff;
+    text-decoration: none;
+    text-align: left;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Add more styles as needed for different sections, images, etc. */

@@ -1,0 +1,105 @@
+/* Reset some default browser styles for consistency */
+body, h1, h2, p, form, ul, li, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color and text color to the body */
+body {
+    background-color: #f4f4f4df; /* Set your preferred background color */
+    font-size: 14px;
+    color: #333; /* Set your preferred text color */
+    font-family: 'Arial', sans-serif; /* Use your preferred font family */
+}
+
+/* Style the header and navigation */
+header {
+    background-color: #007bff; /* Set your header background color */
+    font-size: 15px;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff; /* Set your navigation link color */
+}
+
+/* Style the registration form section */
+#registrationForm {
+    max-width: 600px; /* Set your preferred max-width */
+    margin: 0 auto; /* Center the form on the page */
+    background-color: #fff; /* Set your form background color */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px; /* Add rounded corners to the form */
+}
+
+h1 {
+    font-size: 25px; /* Set the largest font size for "Application Form" */
+    color: #070a0e; /* Set your heading color */
+}
+
+h2 {
+    font-style: italic; /* Italicize "Fill in your details" */
+    font-size: 12px;
+
+}
+
+/* Style form labels and inputs */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px; /* Apply an even font size to all fields */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the button */
+button {
+    background-color: #007bff; /* Set your button background color */
+    color: #fff; /* Set your button text color */
+    padding: 12px 280px; /* Adjust padding for button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Add hover effect to the button */
+button:hover {
+    background-color: #0056b3; /* Adjust the hover background color */
+}
+
+/* Style the "Already have an account" link */
+p a {
+    color: #007bff; /* Set your link color */
+    text-decoration: none;
+}
+
+/* Add hover effect to the link */
+p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+span.required{
+    color:red;
+    margin-left: 4px;
+}
+
+h1, h2, label[for="firstname"] {
+    margin-bottom: 10px;
+}

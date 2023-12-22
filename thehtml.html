@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="thecss.css">
+    <script src="countries.json"></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">About Me</a></li>
+                <li><a href="registration.html">Registration Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="registrationForm">
+        <h1>Application Form</h1>
+        <h2>Fill in your details</h2>
+        <form>
+            <label for="firstName">First Name:<span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+
+            <label for="lastName">Last Name:<span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+
+            <label for="gender">Gender:<span class="required">*</span></label>
+            <select id="gender" name="gender" Placeholder="Select gender"> 
+                <option value="select">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label for="dob">Date of Birth:<span class="required">*</span></label>
+            <input type="date" id="dob" name="dob"  required>
+
+            <label for="email">Email Address:<span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+            <label for="educationLevel">Education Level:<span class="required">*</span></label>
+            <select id="educationLevel" name="educationLevel">
+                <option value="bsC">BsC</option>
+                <option value="msC">MsC</option>
+                <option value="diploma">Diploma</option>
+                <option value="phD">Doctorate (PhD)</option>
+                <option value="highschool">High School/Secondary School</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="middleSchool">Junior/Middle School</option>
+                <option value="postGraduate">Post Graduate</option>
+            </select>
+
+            <labelfor="country">Country:<span class="required">*</span></label>
+            <select id="country" name="country"></select>
+
+            <label for="residence">State/City of Residence:<span class="required">*</span></label>
+            <input type="text" id="residence" name="residence" placeholder="Enter your state of residence" required>
+
+            <label for="employmentStatus">Employment Status:<span class="required">*</span></label>
+            <select id="employmentStatus" name="employmentStatus">
+                <option value="employed">Employed</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="selfEmployed">Self-Employed</option>
+            </select>
+
+            <label for="phoneNumber">Phone Number:<span class="required">*</span></label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="08010010000" required>
+
+            <label for="chooseSchool">Choose School:<span class="required">*</span></label>
+            <select id="chooseSchool" name="chooseSchool">
+                <option value="engineering">School of Engineering</option>
+                <option value="creativeEconomy">School of Creative Economy</option>
+            </select>
+
+            <label for="chooseCourse">Choose Course of Study:<span class="required">*</span></label>
+            <select id="chooseCourse" name="chooseCourse"></select>
+
+            <label for="hearAboutUs">How did you hear about us?</label>
+            <select id="hearAboutUs" name="hearAboutUs">
+                <option value="twitter">Twitter</option>
+                <option value="facebook">Facebook</option>
+                <option value="linkedin">LinkedIn</option>
+                <option value="youtube">YouTube</option>
+                <option value="friend">Friend</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="instagram">Instagram</option>
+                <option value="billboard">Billboard</option>
+            </select>
+
+            <label for="discountCode">Scholarship/Discount Code (Optional):</label>
+            <input type="text" id="discountCode" name="discountCode" placeholder="Scholarship or student ID or discount codes">
+
+        <p> By clicking continue, I agree to the <a href= "#terms">terms of use</a>
+            and acknowledge that I have read the <a href= "#privacy">privacy policy</a>
+        </p>
+
+            <button type="submit">Proceed</button>
+        </form>
+
+        <p>Already have an account? <a href="#">Sign In</a></p>
+    </section>
+
+     
+<!-- Script to dynamically populate the country dropdown and update course options -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var countryDropdown = document.getElementById('country');
+
+        // Load countries from the JSON file served by the web server
+        fetch('countries.json')
+            .then(response => response.json())
+            .then(countriesWithStates => {
+                // Extract only country names (keys)
+                var countryNames = Object.keys(countriesWithStates);
+
+                // Iterate through the list of country names and add options to the dropdown
+                countryNames.forEach(country => {
+                    var option = document.createElement('option');
+                    option.value = country;
+                    option.text = country;
+                    countryDropdown.add(option);
+                });
+            })
+            .catch(error => console.error('Error loading countries:', error));
+    });
+
+
+        // Function to dynamically update course options based on the selected school
+        function updateCourseOptions() {
+            var chooseSchool = document.getElementById('chooseSchool');
+            var chooseCourse = document.getElementById('chooseCourse');
+
+            // Clear previous options
+            chooseCourse.innerHTML = '';
+
+            // Add options based on the selected school
+            if (chooseSchool.value === 'engineering') {
+                addOption(chooseCourse, 'cloudEngineering', 'Cloud Engineering');
+                addOption(chooseCourse, 'frontEndEngineering', 'Front-End Engineering');
+                addOption(chooseCourse, 'backEndEngineering', 'Back-End Engineering');
+            } else if (chooseSchool.value === 'creativeEconomy') {
+                addOption(chooseCourse, 'musicBusiness', 'Navigating the Music Business in Africa: Afrobeats Case Study');
+                addOption(chooseCourse, 'contentMastery', 'Content Mastery for African Creators');
+            }
+        }
+
+        // Function to add an option to a select element
+        function addOption(selectElement, value, text) {
+            var option = document.createElement('option');
+            option.value = value;
+            option.text = text;
+            selectElement.add(option);
+        }
+
+        // Event listener to update course options when the school selection changes
+        var chooseSchool = document.getElementById('chooseSchool');
+        chooseSchool.addEventListener('change', updateCourseOptions);
+
+
+        function validateGender(){
+            var genderDropdown = document.getElementById('gender');
+            var selectedValue = genderDropdown.value;
+            
+            //check if the selected value is "select"
+            if (selectedValue === 'select') {
+                alert('please select a valid gender.'); 
+                genderDropdown.value = 'select';
+            } else{
+                // The user selected a valid gender
+            }
+            }
+    </script>
+
+</body>
+</html>
